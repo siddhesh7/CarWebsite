@@ -14,25 +14,25 @@ function showPrice(str) {
     document.getElementById("txtHint").innerHTML = "";
     return;
 }
-    var price=str;
+    price=str;
 }
 
 function showFuel(str) {
   var xhttp;    
     
-    var fuel=str;
+    fuel=str;
     exec(price,fuel,kms,age,transmission,seller,owner);
 }
 
 function showKms(str) {
   var xhttp;    
-    var kms=str;
+    kms=str;
     exec(price,fuel,kms,age,transmission,seller,owner);
 }
 
 function showAge(str) {
   var xhttp;    
-    var age=str;
+    age=str;
     exec(price,fuel,kms,age,transmission,seller,owner);
 
 }
@@ -40,7 +40,7 @@ function showAge(str) {
 function showTransmission(str) {
   var xhttp;    
   
-    var transmission=str;
+    transmission=str;
     exec(price,fuel,kms,age,transmission,seller,owner);
 
 }
@@ -48,7 +48,7 @@ function showTransmission(str) {
 function showOwners(str) {
   var xhttp;    
     
-    var owner=str;
+    owner=str;
     exec(price,fuel,kms,age,transmission,seller,owner);
 
 }
@@ -56,13 +56,13 @@ function showOwners(str) {
 
 function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1)
 {
-  var price=price1;
-  var fuel=fuel1;
-  var kms=kms1;
-  var age=age1;
-  var transmission=transmission1;
-  var seller=seller1;
-  var owner=owner1;
+  price=price1;
+  fuel=fuel1;
+  kms=kms1;
+  age=age1;
+  transmission=transmission1;
+  seller=seller1;
+  owner=owner1;
 
   xhttp = new XMLHttpRequest();
 
@@ -74,9 +74,9 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1)
       var ss=JSON.parse(s);
       alert(ss);
       var uid=[];
-     var    name=[];
-  var model=[];
-       var price=[];
+      var    name=[];
+      var model=[];
+      var price=[];
        var mileage=[];
        var fuel=[];
        var seller=[];
@@ -105,7 +105,7 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1)
  for( i=0;i<uid.length;i++){
        data=data+name[i]+"<br>"+price[i]+"<br>"+model[i]+"<br>"+mileage[i]+"<br>"+fuel[i]+"<br>"+seller[i]+"<br>"+owner[i]+"<br>"+transmission[i]+"<br>"+location[i];
     }
-    
+
     var info="";
     info=info+"<table class='"+"container2"+"' border:'"+'1'+"'><tr><td>"+data+"</td></tr></table>"
     $("#showDetails").empty();
