@@ -79,6 +79,59 @@ else
 	}
 }
 
+
+//Age
+if($age=="all")
+{
+	$age=1;
+}
+else
+{
+	$year=date("Y");
+	if($age!="g8")
+	{
+		$a1=substr($age,0,1);
+		$a2=substr($age,2);
+
+		$a1=$year-$a1;
+		$a2=$year-$a2;
+
+		$age1="Age BETWEEN ".$a1." AND ".$a2;
+	}
+	else
+	{
+		$a1=substr($age, 1);
+
+		$a1=$year-$a1;
+
+		$age1="Age <= ".$a1;
+	}
+}
+
+
+//echo $age1;
+//Age
+/*
+if($age=="all")
+{
+	$age=1;
+}
+else
+{
+	if($age!="g8")
+	{
+		$a1=substr($age,0,1);
+		$a2=substr($age,2);
+		$age1="Age BETWEEN ".$a1." AND ".$a2;
+	}
+	else
+	{
+		$a1=substr($age, 1);
+		$age1="Age >= ".$a1;
+	}
+}
+
+*/
 //echo $price1;
 //echo $a;
 mysqli_select_db($con,"ajaxexp");

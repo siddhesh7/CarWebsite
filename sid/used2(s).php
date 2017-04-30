@@ -239,11 +239,17 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1)
 	
 </select><br><br><br>
 <label for="certi">Show :</label><br><br>
-
 <select name="certi" class="inp">
 	<option value="all">All Cars</option>
 	<option value="certified">Certified Cars</option>
 	</select>
+<br><br><br>
+  <label for="seller">Seller Type :</label><br><br>
+  <select name="seller" class="inp">
+  <option value="all">All</option>
+  <option value="individual">Individual</option>
+  <option value="Dealer">Dealer</option>
+  </select>
 
 </div>
 
