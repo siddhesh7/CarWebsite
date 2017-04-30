@@ -66,14 +66,26 @@ if($price=="all")
 }
 else
 {
-
+	if($price!="g20")
+	{
+		$p1=substr($price,0,1);
+		$p2=substr($price,2);
+		$price1="Price BETWEEN ".$p1." AND ".$p2;
+	}
+	else
+	{
+		$p1=substr($price, 1);
+		$price1="Price >= ".$p1;
+	}
 }
+
+//echo $price1;
 //echo $a;
 mysqli_select_db($con,"ajaxexp");
-$sql="SELECT * from used_cars where ".$q1;
+//$sql="SELECT * from used_cars where ".$q1;
 
 
-$sql="SELECT * from used_cars where ".$q1." and ".$transmission1." and ".$owner1." and ".$city1;//."and".$owner1;
+$sql="SELECT * from used_cars where ".$q1." and ".$transmission1." and ".$owner1." and ".$city1." and ".$price1;//."and".$owner1;
 //$sql="SELECT * from used_cars where '".$q1."'";
 //$sql="SELECT * FROM used_cars WHERE Fuel = '".$q."'";
 //$sql="SELECT * FROM used_cars WHERE Fuel = '".$q."'";

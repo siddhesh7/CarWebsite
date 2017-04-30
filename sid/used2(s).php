@@ -143,7 +143,7 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1)
 <td><center>Price:
 	<select name="price" onchange="showPrice(this.value)">
 	<option value="all">All</option>
-	<option value="l2">less than 2L</option>
+	<option value="0-2">less than 2L</option>
 	<option value="2-5">2L-5L</option>
 	<option value="5-10">5L-10L</option>
 	<option value="10-20">10L-20L</option>
