@@ -1,14 +1,83 @@
 <?php
 
 $q = $_GET['q'];
+$price = $_GET['price'];
+$owner = $_GET['owner'];
+$transmission = $_GET['transmission'];
+$age = $_GET['age'];
+$city= $_GET['city'];
+
+//echo $price, $owner, $transmission, $age;
 
 $con = mysqli_connect('localhost','root','','ajaxexp');
 if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
 }
 
+//Fuel
+if($q=="all")
+{
+	$q1=1;
+}
+else
+{
+	$a="'$q'";
+	$q1="Fuel=".$a;
+}
+
+//Transmission
+if($transmission=="all")
+{
+	$transmission1=1;
+}
+else
+{
+	$a="'$transmission'";
+	$transmission1="Transmission=".$a;
+}
+
+
+//Owner
+if($owner=="all")
+{
+	$owner1=1;
+}
+else
+{
+	$a="'$owner'";
+	$owner1="Owner=".$a;
+}
+
+//City
+if($city=="all")
+{
+	$city1=1;
+}
+else
+{
+	$a="'$city'";
+	$city1="Location=".$a;
+}
+
+//Price
+if($price=="all")
+{
+	$price1=1;
+}
+else
+{
+
+}
+//echo $a;
 mysqli_select_db($con,"ajaxexp");
-$sql="SELECT * FROM used_cars WHERE Fuel = '".$q."'";
+$sql="SELECT * from used_cars where ".$q1;
+
+
+$sql="SELECT * from used_cars where ".$q1." and ".$transmission1." and ".$owner1." and ".$city1;//."and".$owner1;
+//$sql="SELECT * from used_cars where '".$q1."'";
+//$sql="SELECT * FROM used_cars WHERE Fuel = '".$q."'";
+//$sql="SELECT * FROM used_cars WHERE Fuel = '".$q."'";
+//echo $sql;
 $result = mysqli_query($con,$sql);
 /*
 $count=mysqli_affected_rows($result);
@@ -48,10 +117,10 @@ echo "</td>";
 echo "</tr>";
 */
 //$dc=$dc+ $row['Fuel']+ "\n" ;
-
 }
+
 if(empty($arr)){
-    echo(json_encode(false));
+    echo(json_encode("No such Cars Found"));
 }
 else{
     echo (json_encode($arr));

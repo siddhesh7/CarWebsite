@@ -7,54 +7,53 @@
 <title>Used Cars</title>
 
 <script>
-var price="all",fuel="all",kms="all",age="all",transmission="all",seller="all",owner="all";
+var price="all",fuel="all",kms="all",age="all",transmission="all",seller="all",owner="all",city="all";
 function showPrice(str) {
   var xhttp;    
-  if (str == "all") {
-    document.getElementById("txtHint").innerHTML = "";
-    return;
-}
     price=str;
+    exec(price,fuel,kms,age,transmission,seller,owner,city);
 }
 
 function showFuel(str) {
   var xhttp;    
-    
     fuel=str;
-    exec(price,fuel,kms,age,transmission,seller,owner);
+    exec(price,fuel,kms,age,transmission,seller,owner,city);
 }
 
 function showKms(str) {
   var xhttp;    
     kms=str;
-    exec(price,fuel,kms,age,transmission,seller,owner);
+    exec(price,fuel,kms,age,transmission,seller,owner,city);
 }
 
 function showAge(str) {
   var xhttp;    
     age=str;
-    exec(price,fuel,kms,age,transmission,seller,owner);
+    exec(price,fuel,kms,age,transmission,seller,owner,city);
 
 }
 
 function showTransmission(str) {
   var xhttp;    
-  
     transmission=str;
-    exec(price,fuel,kms,age,transmission,seller,owner);
+    exec(price,fuel,kms,age,transmission,seller,owner,city);
 
 }
 
 function showOwners(str) {
   var xhttp;    
-    
     owner=str;
-    exec(price,fuel,kms,age,transmission,seller,owner);
+    exec(price,fuel,kms,age,transmission,seller,owner,city);
 
 }
 
+function showCity(str) {
+  var xhttp;    
+    city=str;
+    exec(price,fuel,kms,age,transmission,seller,owner,city);
+}
 
-function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1)
+function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1)
 {
   price=price1;
   fuel=fuel1;
@@ -63,6 +62,7 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1)
   transmission=transmission1;
   seller=seller1;
   owner=owner1;
+  city=city1;
 
   xhttp = new XMLHttpRequest();
 
@@ -114,7 +114,7 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1)
   };
 
   //xhttp.open("GET", "getData.php?q="+fuel+"&age="+age+"&trans="+transmission+"&owner="+owner+"&kms="+kms+"&price="+price, true);
-  xhttp.open("GET", "getData.php?q="+fuel+"&price="+price+"&kms="+kms+"&age="+age+"&transmission="+transmission+"&seller="+seller+"&owner="+owner, true);
+  xhttp.open("GET", "getData.php?q="+fuel+"&price="+price+"&kms="+kms+"&age="+age+"&transmission="+transmission+"&seller="+seller+"&owner="+owner+"&city="+city, true);
 
   xhttp.send();
 }
@@ -207,7 +207,19 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1)
 <div class="confilter1" style="float: left; width: 20%">
 <form action="" method="get"><br>
 <label for="loc"> Enter Your Location :</label><br><br>
-<input type="location" name="loc" placeholder="city" class="inp">
+<!--<input type="location" name="loc" placeholder="city" class="inp">-->
+
+<select name="city" style="width: 70%" onchange="showCity(this.value)">
+<option value="all">All</option>
+<option value="mumbai">Mumbai</option>
+<option value="thane">Thane</option>
+<option value="pune">Pune</option>
+<option value="delhi">Delhi</option>
+<option value="chennai">Chennai</option>
+<option value="goa">Goa</option>
+<option value="punjab">Punjab</option>
+</select>
+
 <br><br><br>
 <label for="brand">Select the brand :</label><br><br>
 <select multiple name="brand" class="inp">

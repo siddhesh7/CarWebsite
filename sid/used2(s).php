@@ -7,69 +7,65 @@
 <title>Used Cars</title>
 
 <script>
-var price="all",fuel="all",kms="all",age="all",transmission="all",seller="all";
+var price="all",fuel="all",kms="all",age="all",transmission="all",seller="all",owner="all",city="all";
 function showPrice(str) {
   var xhttp;    
-  if (str == "all") {
-    document.getElementById("txtHint").innerHTML = "";
-    return;
-}
-    var price=str;
+    price=str;
+    exec(price,fuel,kms,age,transmission,seller,owner,city);
 }
 
 function showFuel(str) {
   var xhttp;    
-  if (str == "all") {
-    //not working for all cars
-    document.getElementById("showDetails").innerHTML = PHP_self();
-    return;
-}
-    var fuel=str;
-    exec(fuel);
+    fuel=str;
+    exec(price,fuel,kms,age,transmission,seller,owner,city);
 }
 
 function showKms(str) {
   var xhttp;    
-  if (str == "all") {
-    document.getElementById("txtHint").innerHTML = "";
-    return;
-   }
-    var kms=str;
+    kms=str;
+    exec(price,fuel,kms,age,transmission,seller,owner,city);
 }
 
 function showAge(str) {
   var xhttp;    
-  if (str == "all") {
-    document.getElementById("txtHint").innerHTML = "";
-    return;
-}
-    var age=str;
+    age=str;
+    exec(price,fuel,kms,age,transmission,seller,owner,city);
 
 }
 
 function showTransmission(str) {
   var xhttp;    
-  if (str == "all") {
-    document.getElementById("txtHint").innerHTML = "";
-    return;
-}
-    var transmission=str;
+    transmission=str;
+    exec(price,fuel,kms,age,transmission,seller,owner,city);
 
 }
 
 function showOwners(str) {
   var xhttp;    
-  if (str == "all") {
-    document.getElementById("txtHint").innerHTML = "";
-    return;
-}
-    var owner=str;
+    owner=str;
+    exec(price,fuel,kms,age,transmission,seller,owner,city);
 
 }
-function exec(str)
+
+function showCity(str) {
+  var xhttp;    
+    city=str;
+    exec(price,fuel,kms,age,transmission,seller,owner,city);
+}
+
+function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1)
 {
-  var fuel=str;
+  price=price1;
+  fuel=fuel1;
+  kms=kms1;
+  age=age1;
+  transmission=transmission1;
+  seller=seller1;
+  owner=owner1;
+  city=city1;
+
   xhttp = new XMLHttpRequest();
+
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
 
@@ -78,10 +74,10 @@ function exec(str)
       var ss=JSON.parse(s);
       alert(ss);
       var uid=[];
-     var    name=[];
-  var model=[];
-         var price=[];
-         var mileage=[];
+      var  name=[];
+      var model=[];
+      var price=[];
+       var mileage=[];
        var fuel=[];
        var seller=[];
        var owner=[];
@@ -109,6 +105,7 @@ function exec(str)
  for( i=0;i<uid.length;i++){
        data=data+name[i]+"<br>"+price[i]+"<br>"+model[i]+"<br>"+mileage[i]+"<br>"+fuel[i]+"<br>"+seller[i]+"<br>"+owner[i]+"<br>"+transmission[i]+"<br>"+location[i];
     }
+
     var info="";
     info=info+"<table class='"+"container2"+"' border:'"+'1'+"'><tr><td>"+data+"</td></tr></table>"
     $("#showDetails").empty();
@@ -117,7 +114,7 @@ function exec(str)
   };
 
   //xhttp.open("GET", "getData.php?q="+fuel+"&age="+age+"&trans="+transmission+"&owner="+owner+"&kms="+kms+"&price="+price, true);
-  xhttp.open("GET", "getData.php?q="+fuel, true);
+  xhttp.open("GET", "getData.php?q="+fuel+"&price="+price+"&kms="+kms+"&age="+age+"&transmission="+transmission+"&seller="+seller+"&owner="+owner+"&city="+city, true);
 
   xhttp.send();
 }
@@ -195,11 +192,10 @@ function exec(str)
 <td><center>No Of Owners:
 	<select name="noOfOwners" onchange="showOwners(this.value)">
 	<option value="all">All</option>
-	<option value="1">1 </option>
-	<option value="2">2</option>
-	<option value="3">3</option>
-	<option value="4">4</option>	
-	<option value="g4">more than 4</option>	
+	<option value="1st">1 </option>
+	<option value="2nd">2</option>
+	<option value="3rd">3</option>	
+	<option value="g3">more than 3</option>	
 </center></td>
 
 </tr>
@@ -211,7 +207,19 @@ function exec(str)
 <div class="confilter1" style="float: left; width: 20%">
 <form action="" method="get"><br>
 <label for="loc"> Enter Your Location :</label><br><br>
-<input type="location" name="loc" placeholder="city" class="inp">
+<!--<input type="location" name="loc" placeholder="city" class="inp">-->
+
+<select name="city" style="width: 70%" onchange="showCity(this.value)">
+<option value="all">All</option>
+<option value="mumbai">Mumbai</option>
+<option value="thane">Thane</option>
+<option value="pune">Pune</option>
+<option value="delhi">Delhi</option>
+<option value="chennai">Chennai</option>
+<option value="goa">Goa</option>
+<option value="punjab">Punjab</option>
+</select>
+
 <br><br><br>
 <label for="brand">Select the brand :</label><br><br>
 <select multiple name="brand" class="inp">
@@ -258,8 +266,8 @@ function exec(str)
 -->
 
 <div class="container2" style="float: center;" id="showDetails">
-
-
+<?php include('initialdb.php') ?>
+<!--
 <?php
 $con=mysqli_connect("localhost","root","","ajaxexp");
 // Check connection
