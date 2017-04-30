@@ -114,6 +114,33 @@ else
 //echo $age1;
 
 
+//kmsDriven
+if($kms=="all")
+{
+	$kms1=1;
+}
+else
+{
+	if($kms!="g60")
+	{
+		$k1=substr($kms,0,2);
+		$k2=substr($kms,3);
+		$k1=$k1."000";
+		$k2=$k2."000";
+		$kms1="kmsDriven BETWEEN ".$k1." AND ".$k2;
+	}
+	else
+	{
+		$k1=substr($kms, 1);
+		$k1=$k1."000";
+		$kms1="kmsDriven >= ".$k1;
+	}
+}
+//echo $k1;
+//echo $kms1;
+
+
+
 //Seller
 if($seller=="all")
 {
@@ -167,7 +194,7 @@ mysqli_select_db($con,"ajaxexp");
 //$sql="SELECT * from used_cars where ".$q1;
 
 //echo $certified1;
-$sql="SELECT * from used_cars where ".$q1." and ".$transmission1." and ".$owner1." and ".$city1." and ".$price1." and ".$seller1." and ".$age1." and ".$certified1;//."and ".$certified1;//."and".$owner1;
+$sql="SELECT * from used_cars where ".$q1." and ".$transmission1." and ".$owner1." and ".$city1." and ".$price1." and ".$seller1." and ".$age1." and ".$kms1." and ".$certified1;//."and ".$certified1;//."and".$owner1;
 //$sql="SELECT * from used_cars where '".$q1."'";
 //$sql="SELECT * FROM used_cars WHERE Fuel = '".$q."'";
 //$sql="SELECT * FROM used_cars WHERE Fuel = '".$q."'";

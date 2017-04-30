@@ -99,6 +99,8 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certifie
       var transmission=[];
       var location=[];
       var manufacturingYear=[];
+      var kms=[];
+      var phoneNumber=[];
       //Image=[];
 
       document.getElementById("showDetails").innerHTML="";
@@ -114,13 +116,15 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certifie
       transmission[i]=item.Transmission;
       location[i]=item.Location;
       manufacturingYear[i]=item.Manufacturingyear;
+      kms[i]=item.kmsDriven;
+      phoneNumber[i]=item.phone_number;
       //Image[i]=item.Image;
 
       });
       var i;
       var data=""+"<table>";
  for( i=0;i<uid.length;i++){
-       data=data+name[i]+"<br>"+price[i]+"<br>"+model[i]+"<br>"+mileage[i]+"<br>"+fuel[i]+"<br>"+seller[i]+"<br>"+owner[i]+"<br>"+transmission[i]+"<br>"+location[i]+"<br>"+manufacturingYear[i]+"<br><br>";
+       data=data+name[i]+"<br>"+price[i]+"<br>"+model[i]+"<br>"+mileage[i]+"<br>"+fuel[i]+"<br>"+seller[i]+"<br>"+owner[i]+"<br>"+transmission[i]+"<br>"+location[i]+"<br>"+manufacturingYear[i]+"<br>"+kms[i]+"<br>"+phoneNumber[i]+"<br><br>";
     }
 
     var info="";
@@ -181,7 +185,7 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certifie
 <td><center>KMs Driven:
 	<select name="kms" onchange="showKms(this.value)">
 	<option value="all">All</option>
-	<option value="l20">less than 20k</option>
+	<option value="00t20">less than 20k</option>
 	<option value="20t30">20k to 30k</option>
 	<option value="30t40">30k to 40k</option>
 	<option value="40t50">40k to 50k</option>	
