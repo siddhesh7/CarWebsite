@@ -74,7 +74,7 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1)
       var ss=JSON.parse(s);
       alert(ss);
       var uid=[];
-      var    name=[];
+      var  name=[];
       var model=[];
       var price=[];
        var mileage=[];
@@ -192,11 +192,10 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1)
 <td><center>No Of Owners:
 	<select name="noOfOwners" onchange="showOwners(this.value)">
 	<option value="all">All</option>
-	<option value="1">1 </option>
-	<option value="2">2</option>
-	<option value="3">3</option>
-	<option value="4">4</option>	
-	<option value="g4">more than 4</option>	
+	<option value="1st">1 </option>
+	<option value="2nd">2</option>
+	<option value="3rd">3</option>	
+	<option value="g3">more than 3</option>	
 </center></td>
 
 </tr>

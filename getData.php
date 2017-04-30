@@ -33,13 +33,29 @@ else
 	$a="'$transmission'";
 	$transmission1="Transmission=".$a;
 }
-//$q1=1;
+
+
+//Owner
+if($owner=="all")
+{
+	$owner1=1;
+}
+else
+{
+	$a="'$owner'";
+	$owner1="Owner=".$a;
+}
+
+
+
+
+
 //echo $a;
 mysqli_select_db($con,"ajaxexp");
 $sql="SELECT * from used_cars where ".$q1;
 
 
-$sql="SELECT * from used_cars where ".$q1." and ".$transmission1;
+$sql="SELECT * from used_cars where ".$q1." and ".$transmission1." and ".$owner1;//."and".$owner1;
 //$sql="SELECT * from used_cars where '".$q1."'";
 //$sql="SELECT * FROM used_cars WHERE Fuel = '".$q."'";
 //$sql="SELECT * FROM used_cars WHERE Fuel = '".$q."'";
