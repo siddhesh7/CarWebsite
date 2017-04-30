@@ -1,12 +1,13 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="used.css">
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Righteous" rel="stylesheet">
 
-<title>Used</title>
+<title>Used Cars</title>
 
 <script>
-
+var price="all",fuel="all",kms="all",age="all",transmission="all",seller="all",owner="all";
 function showPrice(str) {
   var xhttp;    
   if (str == "all") {
@@ -18,104 +19,103 @@ function showPrice(str) {
 
 function showFuel(str) {
   var xhttp;    
-  if (str == "all") {
-  	//not working for all cars
-    document.getElementById("showDetails").innerHTML = PHP_self();
-    return;
-}
+    
     var fuel=str;
-    exec(fuel);
+    exec(price,fuel,kms,age,transmission,seller,owner);
 }
 
 function showKms(str) {
   var xhttp;    
-  if (str == "all") {
-    document.getElementById("txtHint").innerHTML = "";
-    return;
-   }
     var kms=str;
+    exec(price,fuel,kms,age,transmission,seller,owner);
 }
 
 function showAge(str) {
   var xhttp;    
-  if (str == "all") {
-    document.getElementById("txtHint").innerHTML = "";
-    return;
-}
     var age=str;
+    exec(price,fuel,kms,age,transmission,seller,owner);
 
 }
 
 function showTransmission(str) {
   var xhttp;    
-  if (str == "all") {
-    document.getElementById("txtHint").innerHTML = "";
-    return;
-}
+  
     var transmission=str;
+    exec(price,fuel,kms,age,transmission,seller,owner);
 
 }
 
 function showOwners(str) {
   var xhttp;    
-  if (str == "all") {
-    document.getElementById("txtHint").innerHTML = "";
-    return;
-}
+    
     var owner=str;
+    exec(price,fuel,kms,age,transmission,seller,owner);
 
 }
-function exec(str)
+
+
+function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1)
 {
-	var fuel=str;
+  var price=price1;
+  var fuel=fuel1;
+  var kms=kms1;
+  var age=age1;
+  var transmission=transmission1;
+  var seller=seller1;
+  var owner=owner1;
+
   xhttp = new XMLHttpRequest();
+
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
 
-    	var s= this.responseText;
-    	alert(s);
-    	var ss=JSON.parse(s);
-    	alert(ss);
-    	$uid=[];
-    	$name=[];
-    	$model=[];
-    	$price=[];
-    	$mileage=[];
-    	$fuel=[];
-    	$seller=[];
-    	$owner=[];
-    	$transmission=[];
-    	$location=[];
-    	$Image=[];
+      var s= this.responseText;
+      alert(s);
+      var ss=JSON.parse(s);
+      alert(ss);
+      var uid=[];
+     var    name=[];
+  var model=[];
+       var price=[];
+       var mileage=[];
+       var fuel=[];
+       var seller=[];
+       var owner=[];
+       var transmission=[];
+       var location=[];
+      //Image=[];
 
-    	document.getElementById("showDetails").innerHTML="";
-    	$.each(ss,function(i,item){
-    		uid[i]=item.ucid;
-    		name[i]=item.Name;
-    	
-    	
-    	price[i]=item.Price;
-   model[i]=item.Model;
-    	mileage[i]=item.Mileage;
-    	fuel[i]=item.Fuel;;
-    	seller[i]=item.Seller;
-    	owner[i]=item.Owner;
-    	transmission[i]=item.Transmission;
-    	location[i]=item.Location;
-    	Image[i]=item.Image;
+      document.getElementById("showDetails").innerHTML="";
+      $.each(ss,function(i,item){
+      uid[i]=item.ucid;
+      name[i]=item.Name;
+      price[i]=item.Price;
+      model[i]=item.Model;
+      mileage[i]=item.Mileage;
+      fuel[i]=item.Fuel;
+      seller[i]=item.Seller;
+      owner[i]=item.Owner;
+      transmission[i]=item.Transmission;
+      location[i]=item.Location;
+      //Image[i]=item.Image;
 
-    	});
-    	var i;
-    	var data;
- for( i=0;i<10;i++){
-    	 data=$name[i]+" "+price[i]+" ";
-
+      });
+      var i;
+      var data=""+"<table>";
+ for( i=0;i<uid.length;i++){
+       data=data+name[i]+"<br>"+price[i]+"<br>"+model[i]+"<br>"+mileage[i]+"<br>"+fuel[i]+"<br>"+seller[i]+"<br>"+owner[i]+"<br>"+transmission[i]+"<br>"+location[i];
     }
-      document.getElementById("showDetails").innerHTML = data;
+    
+    var info="";
+    info=info+"<table class='"+"container2"+"' border:'"+'1'+"'><tr><td>"+data+"</td></tr></table>"
+    $("#showDetails").empty();
+      $("#showDetails").append(data);
     }
   };
 
-  xhttp.open("GET", "getData.php?q="+fuel, true);
+  //xhttp.open("GET", "getData.php?q="+fuel+"&age="+age+"&trans="+transmission+"&owner="+owner+"&kms="+kms+"&price="+price, true);
+  xhttp.open("GET", "getData.php?q="+fuel+"&price="+price+"&kms="+kms+"&age="+age+"&transmission="+transmission+"&seller="+seller+"&owner="+owner, true);
+
   xhttp.send();
 }
 </script>
@@ -127,8 +127,15 @@ function exec(str)
 
 <div class="header2">
 	<h1>Used Cars</h1>
-</div>
 
+<nav>
+  <ul>
+    <li><a href="ajaxexp.php">Home</a></li>
+    <li>Used Cars</li>
+    <li>New Cars</li>
+  </ul>
+</nav></div>
+<br>
 <div class="nav">
 <table width=100%>
 <tr>
@@ -154,7 +161,7 @@ function exec(str)
 </select> 
 </center></td>
 
-<td><center>KMs Driven;
+<td><center>KMs Driven:
 	<select name="kms" onchange="showKms(this.value)">
 	<option value="all">All</option>
 	<option value="l20">less than 20k</option>
@@ -199,12 +206,12 @@ function exec(str)
 
 <div class="container1">
 <div class="confilter1" style="float: left; width: 20%">
-<form action="" method="get">
+<form action="" method="get"><br>
 <label for="loc"> Enter Your Location :</label><br><br>
-<input type="location" name="loc" placeholder="city">
+<input type="location" name="loc" placeholder="city" class="inp">
 <br><br><br>
 <label for="brand">Select the brand :</label><br><br>
-<select multiple name="brand">
+<select multiple name="brand" class="inp">
 	<option value="maruti">Maruti Suzuki</option>
 	<option value="hyundai">Hyundai</option>
 	<option value="toyota">Toyota</option>
@@ -222,7 +229,7 @@ function exec(str)
 </select><br><br><br>
 <label for="certi">Show :</label><br><br>
 
-<select name="certi">
+<select name="certi" class="inp">
 	<option value="all">All Cars</option>
 	<option value="certified">Certified Cars</option>
 	</select>
@@ -248,8 +255,8 @@ function exec(str)
 -->
 
 <div class="container2" style="float: center;" id="showDetails">
-
-
+<?php include('initialdb.php') ?>
+<!--
 <?php
 $con=mysqli_connect("localhost","root","","ajaxexp");
 // Check connection
