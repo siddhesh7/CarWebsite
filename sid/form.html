@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Registration
+	</title>
+	<style type="text/css">
+	@import url('https://fonts.googleapis.com/css?family=Righteous');
+		h1{
+			text-align: center;
+		}
+		form{
+			width: 50%;
+			margin: 0 auto;
+			border: 10px solid white;
+			box-shadow: 2px 2px 2px black;
+			text-align: center;
+			background-color: black;
+			color: white;
+			font-family: 'Righteous', cursive;
+		}
+		input{
+			display: block;
+			margin:0 auto;
+			padding: 10px;
+		}
+		#ca{
+			display: inline;
+		}
+	</style>
+</head>
+<body>
+<header>		
+	<h1> Registration </h1>
+</header>
+
+<div class="f1">
+	<form>
+	<br><br>
+		NAME: <input type="text" name="Name" required><br>
+		EMAIL: <input type="EMAIL" name="Email"><br>
+		PASSWORD: <input type="password" name="Pass"><br>
+		CATEGORY: <input id="ca" type="radio" name="cat" value="Individual"> Individual
+				  <input id="ca" type="radio" name="cat" value="Dealer"> Dealer <br> <br>
+		PHONE NO: <input type="tel" name="Phone"><br>
+		
+		<input type="submit" value="Submit"><br><br>
+		<br>
+	</form>
+</div>
+
+</body>
+</html>
