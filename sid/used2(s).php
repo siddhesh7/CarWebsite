@@ -7,53 +7,67 @@
 <title>Used Cars</title>
 
 <script>
-var price="all",fuel="all",kms="all",age="all",transmission="all",seller="all",owner="all",city="all";
+var price="all",fuel="all",kms="all",age="all",transmission="all",seller="all",owner="all",city="all",certified="all";
 function showPrice(str) {
   var xhttp;    
     price=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
 }
 
 function showFuel(str) {
   var xhttp;    
     fuel=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
 }
 
 function showKms(str) {
   var xhttp;    
     kms=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
 }
 
 function showAge(str) {
   var xhttp;    
     age=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
 
 }
 
 function showTransmission(str) {
   var xhttp;    
     transmission=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
 
 }
 
 function showOwners(str) {
   var xhttp;    
     owner=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
 
 }
 
 function showCity(str) {
   var xhttp;    
     city=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
 }
 
-function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1)
+function showSeller(str) {
+  var xhttp;    
+    seller=str;
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
+}
+
+
+function showCertified(str) {
+  var xhttp;    
+    certified=str;
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
+}
+
+
+function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certified1)
 {
   price=price1;
   fuel=fuel1;
@@ -63,6 +77,7 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1)
   seller=seller1;
   owner=owner1;
   city=city1;
+  certified=certified1;
 
   xhttp = new XMLHttpRequest();
 
@@ -77,12 +92,13 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1)
       var  name=[];
       var model=[];
       var price=[];
-       var mileage=[];
-       var fuel=[];
-       var seller=[];
-       var owner=[];
-       var transmission=[];
-       var location=[];
+      var mileage=[];
+      var fuel=[];
+      var seller=[];
+      var owner=[];
+      var transmission=[];
+      var location=[];
+      var manufacturingYear=[];
       //Image=[];
 
       document.getElementById("showDetails").innerHTML="";
@@ -97,13 +113,14 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1)
       owner[i]=item.Owner;
       transmission[i]=item.Transmission;
       location[i]=item.Location;
+      manufacturingYear[i]=item.Manufacturingyear;
       //Image[i]=item.Image;
 
       });
       var i;
       var data=""+"<table>";
  for( i=0;i<uid.length;i++){
-       data=data+name[i]+"<br>"+price[i]+"<br>"+model[i]+"<br>"+mileage[i]+"<br>"+fuel[i]+"<br>"+seller[i]+"<br>"+owner[i]+"<br>"+transmission[i]+"<br>"+location[i];
+       data=data+name[i]+"<br>"+price[i]+"<br>"+model[i]+"<br>"+mileage[i]+"<br>"+fuel[i]+"<br>"+seller[i]+"<br>"+owner[i]+"<br>"+transmission[i]+"<br>"+location[i]+"<br>"+manufacturingYear[i]+"<br><br>";
     }
 
     var info="";
@@ -114,7 +131,7 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1)
   };
 
   //xhttp.open("GET", "getData.php?q="+fuel+"&age="+age+"&trans="+transmission+"&owner="+owner+"&kms="+kms+"&price="+price, true);
-  xhttp.open("GET", "getData.php?q="+fuel+"&price="+price+"&kms="+kms+"&age="+age+"&transmission="+transmission+"&seller="+seller+"&owner="+owner+"&city="+city, true);
+  xhttp.open("GET", "getData.php?q="+fuel+"&price="+price+"&kms="+kms+"&age="+age+"&transmission="+transmission+"&seller="+seller+"&owner="+owner+"&city="+city+"&certified="+certified, true);
 
   xhttp.send();
 }
@@ -239,13 +256,13 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1)
 	
 </select><br><br><br>
 <label for="certi">Show :</label><br><br>
-<select name="certi" class="inp">
+<select name="certi" class="inp" onchange="showCertified(this.value)">
 	<option value="all">All Cars</option>
 	<option value="certified">Certified Cars</option>
 	</select>
 <br><br><br>
   <label for="seller">Seller Type :</label><br><br>
-  <select name="seller" class="inp">
+  <select name="seller" class="inp" onchange="showSeller(this.value)">
   <option value="all">All</option>
   <option value="individual">Individual</option>
   <option value="Dealer">Dealer</option>
