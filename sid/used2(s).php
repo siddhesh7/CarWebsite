@@ -101,6 +101,7 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certifie
       var manufacturingYear=[];
       var kms=[];
       var phoneNumber=[];
+      var image=[];
       //Image=[];
 
       document.getElementById("showDetails").innerHTML="";
@@ -118,14 +119,23 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certifie
       manufacturingYear[i]=item.Manufacturingyear;
       kms[i]=item.kmsDriven;
       phoneNumber[i]=item.phone_number;
-      //Image[i]=item.Image;
+      image[i]=item.Image;
 
       });
       var i;
-      var data=""+"<table>";
+      //original code
+      /*var data=""+"<table>";
  for( i=0;i<uid.length;i++){
        data=data+name[i]+"<br>"+price[i]+"<br>"+model[i]+"<br>"+mileage[i]+"<br>"+fuel[i]+"<br>"+seller[i]+"<br>"+owner[i]+"<br>"+transmission[i]+"<br>"+location[i]+"<br>"+manufacturingYear[i]+"<br>"+kms[i]+"<br>"+phoneNumber[i]+"<br><br>";
     }
+*/
+
+    //var data=""+"<table>";
+    var data="<table border='1'>";
+ for( i=0;i<uid.length;i++){
+       data=data+"<tr><td><center><img src="+image[i]+"width=400 alt='No Image Available'></img></center></td>"+"<td width='60%'>Name : "+name[i]+"<br>Price : "+price[i]+"Lacs"+"<br>Model : "+model[i]+"<br>Mileage : "+mileage[i]+"<br>Fuel : "+fuel[i]+"<br>Seller : "+seller[i]+"<br>Owner : "+owner[i]+"<br>Transmission : "+transmission[i]+"<br>Location : "+location[i]+"<br>Manufacture : "+manufacturingYear[i]+"<br>KMs Driven : "+kms[i]+"<br>Contact : "+phoneNumber[i]+"<br><br>"+"</td></tr>";
+    }
+    data=data+"</table>";
 
     var info="";
     info=info+"<table class='"+"container2"+"' border:'"+'1'+"'><tr><td>"+data+"</td></tr></table>"
