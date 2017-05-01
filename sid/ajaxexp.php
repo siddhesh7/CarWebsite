@@ -12,6 +12,13 @@
     height:200px;
     padding: 40px;
 }
+
+video
+{
+  max-width:100%;
+  height: auto;
+  margin-bottom: 10%;
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -22,7 +29,7 @@ function showCar() {
   if (str=="") {
     document.getElementById("txtHint").innerHTML="";
     return;
-  } 
+  }
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp=new XMLHttpRequest();
@@ -44,7 +51,50 @@ function showCar() {
 <body>
 
 
-<!-- <script>
+
+<div class="header">
+<h1 id="tit">Cars - Get Yours Today</h1>
+
+
+<div class="hbuttons1">
+
+<a href="new1.php"><input type="button" name="new_top" value="New" class="hbuttons"></a>
+<a href="used2(s).php"><input type="button" name="used_top" value="Used" class="hbuttons"></a>
+<input type="button" name="new_top" value="Comparator" class="hbuttons">
+
+<a href="form.html" id="myRBtn" class="hbuttons">Register</a>
+
+
+
+<!-- Trigger/Open The Modal -->
+<a href="#" id="myBtn" class="hbuttons">Login</a>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>LOGIN</h2>
+    </div>
+    <div class="modal-body"><br>
+      Email-id:<input type="text"><br><br>
+	  Password:<input type="password"><br>
+	  <br>
+    </div>
+    <div class="modal-footer">
+      <h3><input type="Submit" value="Submit"></h3>
+    </div>
+  </div>
+
+</div>
+
+
+
+</div>
+<script>
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -53,8 +103,8 @@ var btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-modal.style.display="none";
-// When the user clicks the button, open the modal 
+
+// When the user clicks the button, open the modal
 btn.onclick = function() {
     modal.style.display = "block";
 }
@@ -71,21 +121,7 @@ window.onclick = function(event) {
     }
 }
 </script>
- -->
-<div class="header">
-<h1 id="tit">Cars - Get Yours Today</h1>
 
-
-<div class="hbuttons1">
-<form >
-<a href="new1.php"><input type="button" name="new_top" value="New" class="hbuttons"></a>
-<a href="used2(s).php"><input type="button" name="used_top" value="Used" class="hbuttons"></a>
-<input type="button" name="new_top" value="Comparator" class="hbuttons">
-<a href="login.php" id="myBtn" class="hbuttons">Login</a>
-<a href="form.html" id="myBtn" class="hbuttons">Register</a>
-
-</form>
-</div>
 <br><br>
 <center>
 <form>
@@ -116,27 +152,37 @@ window.onclick = function(event) {
 <ul class="cb-slideshow">
     <li>
         <span><img src="1.jpg"></span>
-        
+
     </li>
     <li>
         <span><img src="2.jpg"></span>
-       
+
     </li>
     <li>
         <span><img src="3.jpg"></span>
-      
+
     </li>
     <li>
         <span><img src="2.jpg"></span>
-       
+
     </li>
 </ul>
 
+
+
+
 </div>
+
+<center><video width="800" controls>
+  <source src="Videos/baleno.mp4" type="video/mp4">
+ <!--<source src="baleno.ogg" type="video/ogg">-->  
+  Your browser does not support HTML5 video.
+</video></center>
+
 
 
 <div class="footer">
-<p>Developed by Siddhesh Hindalekar and Team</p>
+<p>Developed by ...</p>
 </div>
 </body>
 </html>
