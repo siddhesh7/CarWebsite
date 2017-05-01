@@ -129,11 +129,11 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certifie
        data=data+name[i]+"<br>"+price[i]+"<br>"+model[i]+"<br>"+mileage[i]+"<br>"+fuel[i]+"<br>"+seller[i]+"<br>"+owner[i]+"<br>"+transmission[i]+"<br>"+location[i]+"<br>"+manufacturingYear[i]+"<br>"+kms[i]+"<br>"+phoneNumber[i]+"<br><br>";
     }
 */
-
+    //alert(image[i]);
     //var data=""+"<table>";
     var data="<table border='1'>";
  for( i=0;i<uid.length;i++){
-       data=data+"<tr><td><center><img src="+image[i]+"width=400 alt='No Image Available'></img></center></td>"+"<td width='60%'>Name : "+name[i]+"<br>Price : "+price[i]+"Lacs"+"<br>Model : "+model[i]+"<br>Mileage : "+mileage[i]+"<br>Fuel : "+fuel[i]+"<br>Seller : "+seller[i]+"<br>Owner : "+owner[i]+"<br>Transmission : "+transmission[i]+"<br>Location : "+location[i]+"<br>Manufacture : "+manufacturingYear[i]+"<br>KMs Driven : "+kms[i]+"<br>Contact : "+phoneNumber[i]+"<br><br>"+"</td></tr>";
+       data=data+"<tr><td><center><img src="+image[i]+" width=400 alt='No Image Available'></img></center></td>"+"<td width='60%'>Name : "+name[i]+"<br>Price : "+price[i]+"Lacs"+"<br>Model : "+model[i]+"<br>Mileage : "+mileage[i]+"<br>Fuel : "+fuel[i]+"<br>Seller : "+seller[i]+"<br>Owner : "+owner[i]+"<br>Transmission : "+transmission[i]+"<br>Location : "+location[i]+"<br>Manufacture : "+manufacturingYear[i]+"<br>KMs Driven : "+kms[i]+"<br>Contact : "+phoneNumber[i]+"<br><br>"+"</td></tr>";
     }
     data=data+"</table>";
 
@@ -304,66 +304,6 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certifie
 
 <div class="container2" style="float: center;" id="showDetails">
 <?php include('initialdb.php') ?>
-<!--
-<?php
-$con=mysqli_connect("localhost","root","","ajaxexp");
-// Check connection
-if (mysqli_connect_errno())
-{
-echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-
-
-$result = mysqli_query($con,"SELECT * FROM used_cars");
-/*$count=mysqli_affected_rows($result);
-echo"<script>";
-echo alert("No of Cars Available : "+$count);
-echo"</script>";
-*/
-echo "<table border='1'>";
-
-while($row = mysqli_fetch_array($result))
-{
-echo "<tr>";
-echo "<td><center><img src=" . $row['Image'] . " width='400' alt='sorry no Image Available'></img></center></td>";
-$name=$row['Name'];
-$price=$row['Price'] ;
-$model=$row['Model'];
-$mileage=$row['Mileage'];
-$fuel=$row['Fuel'];
-$seller=$row['Seller'];
-$owner=$row['Owner'];
-$transmission=$row['Transmission'];
-$location=$row['Location'];
-
-echo "<td width='60%'> Name : ".$name."<br>";
-echo "Price : ".$price."L<br>";
-echo "Model : ".$model."<br>";
-echo "Mileage : ".$mileage."<br>";
-echo "Fuel : ".$fuel."<br>";
-echo "Seller : ".$seller."<br>";
-echo "Owner : ".$owner."<br>";
-echo "Transmission : ".$transmission."<br>";
-echo "Location : ".$location."<br>";
-echo "</td>";
-
-/*echo "<td width='60%>" . $row['Name'] . "</td>";
-echo "<td width='60%>" . $row['Price'] . "</td>";
-echo "<td width='60%'>" . $row['Model'] . "</td>";
-echo "<td width='60%'>" . $row['Mileage'] . "</td>";
-echo "<td width='60%'>" . $row['Fuel'] . "</td>";
-echo "<td width='60%'>" . $row['Seller'] . "</td>";
-echo "<td width='60%'>" . $row['Owner'] . "</td>";
-echo "<td width='60%'>" . $row['Transmission'] . "</td>";
-echo "<td width='60%'>" . $row['Location'] . "</td>";
-*/
-
-echo "</tr>";
-}
-echo "</table>";
-
-mysqli_close($con);
-?>
 
 
 <!--
