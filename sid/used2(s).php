@@ -145,7 +145,7 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certifie
 
     var data="<table border='1'>";
  for( i=0;i<uid.length;i++){
-       data=data+"<tr><td><center><img src=Images/"+image[i]+" width=400 alt='No Image Available'></img></center></td>"+"<td width='60%'>Name : "+name[i]+"<br>Price : "+price[i]+"Lacs"+"<br>Model : "+model[i]+"<br>Mileage : "+mileage[i]+"<br>Fuel : "+fuel[i]+"<br>Seller : "+seller[i]+"<br>Owner : "+owner[i]+"<br>Transmission : "+transmission[i]+"<br>Location : "+location[i]+"<br>Manufacture : "+manufacturingYear[i]+"<br>KMs Driven : "+kms[i]+"<br>Contact : "+phoneNumber[i]+"<br><br>"+"</td></tr>";
+       data=data+"<tr><td><center><img src=Images/"+image[i]+" width=400 alt='No Image Available'></img></center></td>"+"<td width='60%'>Name : <b>"+name[i]+"</b><br>Price :<b> "+price[i]+"Lacs</b>"+"<br>Model : <b>"+model[i]+"</b><br>Mileage : <b>"+mileage[i]+"</b><br>Fuel :<b> "+fuel[i]+"</b><br>Seller :<b> "+seller[i]+"</b><br>Owner : <b>"+owner[i]+"</b><br>Transmission : <b>"+transmission[i]+"</b><br>Location :<b> "+location[i]+"</b><br>Manufacture : <b>"+manufacturingYear[i]+"</b><br>KMs Driven :<b> "+kms[i]+"</b><br>Contact : <b>"+phoneNumber[i]+"</b><br><br>"+"</td></tr>";
     }
     data=data+"</table>";
 

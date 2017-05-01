@@ -36,22 +36,22 @@ $contact=$row['phone_number'];
 
 
 
-echo "<td width='60%'> Name : ".$name."<br>";
-echo "Price : ".$price."L<br>";
-echo "Model : ".$model."<br>";
-echo "Mileage : ".$mileage."<br>";
-echo "Fuel : ".$fuel."<br>";
-echo "Seller : ".$seller."<br>";
-echo "Owner : ".$owner."<br>";
-echo "Transmission : ".$transmission."<br>";
-echo "Location : ".$location."<br>";
-echo "Manufacturing Year : ".$manufacturingyear."<br>";
-echo "KMs Driven : ".$kms."<br>";
-echo "Contact : ".$contact."<br>";
+echo "<td width='60%'> Name : <b>".$name."</b><br>";
+echo "Price : <b>".$price."L</b><br>";
+echo "Model : <b>".$model."</b><br>";
+echo "Mileage : <b>".$mileage."</b><br>";
+echo "Fuel : <b>".$fuel."</b><br>";
+echo "Seller : <b>".$seller."</b><br>";
+echo "Owner : <b>".$owner."</b><br>";
+echo "Transmission : <b>".$transmission."</b><br>";
+echo "Location :<b>".$location."</b><br>";
+echo "Manufacturing Year : <b>".$manufacturingyear."</b><br>";
+echo "KMs Driven :<b> ".$kms."</b><br>";
+echo "Contact : <b>".$contact."</b><br>";
 echo "</td>";
 
 /*echo "<td width='60%>" . $row['Name'] . "</td>";
-echo "<td width='60%>" . $row['Price'] . "</td>";
+echo "<td width='60%>" . $row['Price'] /td>";
 echo "<td width='60%'>" . $row['Model'] . "</td>";
 echo "<td width='60%'>" . $row['Mileage'] . "</td>";
 echo "<td width='60%'>" . $row['Fuel'] . "</td>";
