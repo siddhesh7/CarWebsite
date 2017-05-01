@@ -7,67 +7,74 @@
 <title>Used Cars</title>
 
 <script>
-var price="all",fuel="all",kms="all",age="all",transmission="all",seller="all",owner="all",city="all",certified="all";
+var price="all",fuel="all",kms="all",age="all",transmission="all",seller="all",owner="all",city="all",certified="all",type="all";
 function showPrice(str) {
   var xhttp;    
     price=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified,type);
 }
 
 function showFuel(str) {
   var xhttp;    
     fuel=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified,type);
 }
 
 function showKms(str) {
   var xhttp;    
     kms=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified,type);
 }
 
 function showAge(str) {
   var xhttp;    
     age=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified,type);
 
 }
 
 function showTransmission(str) {
   var xhttp;    
     transmission=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified,type);
 
 }
 
 function showOwners(str) {
   var xhttp;    
     owner=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified,type);
 
 }
 
 function showCity(str) {
   var xhttp;    
     city=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified,type);
 }
 
 function showSeller(str) {
   var xhttp;    
     seller=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified,type);
 }
 
 
 function showCertified(str) {
   var xhttp;    
     certified=str;
-    exec(price,fuel,kms,age,transmission,seller,owner,city,certified);
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified,type);
 }
 
 
-function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certified1)
+function showType(str) {
+  var xhttp;    
+    type=str;
+    exec(price,fuel,kms,age,transmission,seller,owner,city,certified,type);
+}
+
+
+function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certified1,type1)
 {
   price=price1;
   fuel=fuel1;
@@ -78,6 +85,7 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certifie
   owner=owner1;
   city=city1;
   certified=certified1;
+  type=type1;
 
   xhttp = new XMLHttpRequest();
 
@@ -102,6 +110,7 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certifie
       var kms=[];
       var phoneNumber=[];
       var image=[];
+      var type=[];
       //Image=[];
 
       document.getElementById("showDetails").innerHTML="";
@@ -120,6 +129,7 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certifie
       kms[i]=item.kmsDriven;
       phoneNumber[i]=item.phone_number;
       image[i]=item.Image;
+      type[i]=item.BodyType;
 
       });
       var i;
@@ -131,21 +141,23 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certifie
 */
     //alert(image[i]);
     //var data=""+"<table>";
+    //<style>td,th{padding:15px;}</style>
+
     var data="<table border='1'>";
  for( i=0;i<uid.length;i++){
-       data=data+"<tr><td><center><img src="+image[i]+" width=400 alt='No Image Available'></img></center></td>"+"<td width='60%'>Name : "+name[i]+"<br>Price : "+price[i]+"Lacs"+"<br>Model : "+model[i]+"<br>Mileage : "+mileage[i]+"<br>Fuel : "+fuel[i]+"<br>Seller : "+seller[i]+"<br>Owner : "+owner[i]+"<br>Transmission : "+transmission[i]+"<br>Location : "+location[i]+"<br>Manufacture : "+manufacturingYear[i]+"<br>KMs Driven : "+kms[i]+"<br>Contact : "+phoneNumber[i]+"<br><br>"+"</td></tr>";
+       data=data+"<tr><td><center><img src=Images/"+image[i]+" width=400 alt='No Image Available'></img></center></td>"+"<td width='60%'>Name : "+name[i]+"<br>Price : "+price[i]+"Lacs"+"<br>Model : "+model[i]+"<br>Mileage : "+mileage[i]+"<br>Fuel : "+fuel[i]+"<br>Seller : "+seller[i]+"<br>Owner : "+owner[i]+"<br>Transmission : "+transmission[i]+"<br>Location : "+location[i]+"<br>Manufacture : "+manufacturingYear[i]+"<br>KMs Driven : "+kms[i]+"<br>Contact : "+phoneNumber[i]+"<br><br>"+"</td></tr>";
     }
     data=data+"</table>";
 
-    var info="";
-    info=info+"<table class='"+"container2"+"' border:'"+'1'+"'><tr><td>"+data+"</td></tr></table>"
+    //var info="";
+    //info=info+"<table class='"+"container2"+"' border:'"+'1'+"'><tr><td>"+data+"</td></tr></table>"
     $("#showDetails").empty();
       $("#showDetails").append(data);
     }
   };
 
   //xhttp.open("GET", "getData.php?q="+fuel+"&age="+age+"&trans="+transmission+"&owner="+owner+"&kms="+kms+"&price="+price, true);
-  xhttp.open("GET", "getData.php?q="+fuel+"&price="+price+"&kms="+kms+"&age="+age+"&transmission="+transmission+"&seller="+seller+"&owner="+owner+"&city="+city+"&certified="+certified, true);
+  xhttp.open("GET", "getData.php?q="+fuel+"&price="+price+"&kms="+kms+"&age="+age+"&transmission="+transmission+"&seller="+seller+"&owner="+owner+"&city="+city+"&certified="+certified+"&type="+type, true);
 
   xhttp.send();
 }
@@ -229,6 +241,14 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certifie
 	<option value="g3">more than 3</option>	
 </center></td>
 
+<td><center>Type:
+  <select name="type" onchange="showType(this.value)">
+  <option value="all">All</option>
+  <option value="Sedan">Sedan</option>
+  <option value="Hatch Back">HatchBack</option>
+  <option value="Suv">SUV</option>  
+</center></td>
+
 </tr>
 </table>
 
@@ -302,7 +322,7 @@ function exec(price1,fuel1,kms1,age1,transmission1,seller1,owner1,city1,certifie
 </div>
 -->
 
-<div class="container2" style="float: center;" id="showDetails">
+<div class="container2" style="float: center;overflow-x:auto;" id="showDetails">
 <?php include('initialdb.php') ?>
 
 

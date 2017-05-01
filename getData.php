@@ -9,6 +9,7 @@ $seller= $_GET['seller'];
 $age = $_GET['age'];
 $city = $_GET['city'];
 $certified = $_GET['certified'];
+$type = $_GET['type'];
 
 //echo $price, $owner, $transmission, $age;
 
@@ -163,38 +164,30 @@ else
 	$certified1="Certified="."'y'";
 }
 
-//echo $seller1;
-//echo $certified1;
-//echo $age1;
-//Age
-/*
-if($age=="all")
+
+
+//Type
+if($type=="all")
 {
-	$age=1;
+	$type1=1;
 }
 else
 {
-	if($age!="g8")
-	{
-		$a1=substr($age,0,1);
-		$a2=substr($age,2);
-		$age1="Age BETWEEN ".$a1." AND ".$a2;
-	}
-	else
-	{
-		$a1=substr($age, 1);
-		$age1="Age >= ".$a1;
-	}
+	$t="'$type'";
+	$type1="BodyType=".$t;
 }
 
-*/
+//echo $seller1;
+//echo $certified1;
+//echo $age1;
+
 //echo $price1;
 //echo $a;
 mysqli_select_db($con,"ajaxexp");
 //$sql="SELECT * from used_cars where ".$q1;
 
 //echo $certified1;
-$sql="SELECT * from used_cars where ".$q1." and ".$transmission1." and ".$owner1." and ".$city1." and ".$price1." and ".$seller1." and ".$age1." and ".$kms1." and ".$certified1;//."and ".$certified1;//."and".$owner1;
+$sql="SELECT * from used_cars where ".$q1." and ".$transmission1." and ".$owner1." and ".$city1." and ".$price1." and ".$seller1." and ".$age1." and ".$kms1." and ".$certified1." and ".$type1;//."and ".$certified1;//."and".$owner1;
 //$sql="SELECT * from used_cars where '".$q1."'";
 //$sql="SELECT * FROM used_cars WHERE Fuel = '".$q."'";
 //$sql="SELECT * FROM used_cars WHERE Fuel = '".$q."'";
